@@ -1,0 +1,34 @@
+<h4 class="text-center">Registre-se e mostre seu pet ao mundo</h4>
+
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (ngSubmit)="cadastrar()">
+
+ <div class="mb-3">
+  <input placeholder="E-mail" type="text" class="form-control" formControlName="email">
+  <app-mensagem mensagem="Email obrigatório!"
+  *ngIf="novoUsuarioForm.get('email')?.errors?.required &&
+    novoUsuarioForm.get('email')?.touched"
+  ></app-mensagem>
+  <app-mensagem mensagem="Email no formato incorreto."
+  *ngIf="novoUsuarioForm.get('email')?.errors?.email &&
+    novoUsuarioForm.get('email')?.touched"
+  ></app-mensagem>
+</div>
+
+ <div class="mb-3">
+  <input placeholder="Nome Completo" type="text" class="form-control" formControlName="fullName">
+  <app-mensagem mensagem="Nome incorreto" *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched"></app-mensagem>
+ </div>
+
+ <div class="mb-3">
+  <input placeholder="Usuário de acesso" type="text" class="form-control" formControlName="userName">
+ </div>
+
+ <div class="mb-3">
+  <input placeholder="Senha" type="password" class="form-control" formControlName="password">
+ </div>
+
+ <div class="d-grid gap-2">
+   <button class="btn btn-primary btn-block ">Cadastro</button>
+ </div>
+</form>
+<p>Já é usuário? <a [routerLink]="['']"> Acesse!</a></p>
