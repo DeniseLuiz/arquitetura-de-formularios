@@ -24,6 +24,8 @@
   <app-mensagem mensagem="O campo usuário aceita somente letras minúsculas"
   *ngIf="novoUsuarioForm.get('userName')?.errors?.minusculo && novoUsuarioForm.get('userName')?.touched"></app-mensagem>
   <!-- minusculo é o nome do atributo retornado na function minusculoValidator -->
+  <app-mensagem mensagem="Campo obrigatório"
+  *ngIf="novoUsuarioForm.get('userName')?.errors?.required && novoUsuarioForm.get('userName')?.touched"></app-mensagem>
  </div>
 
  <div class="mb-3">

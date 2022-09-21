@@ -24,10 +24,10 @@ export class NovoUsuarioComponent implements OnInit {
         Validators.email
       ]],
       fullName: ['',
-      Validators.required,
-      Validators.minLength(4)
+      [Validators.required,
+      Validators.minLength(4)]
     ],
-      userName: ['', [minusculoValidator]],
+      userName: ['', [Validators.required, minusculoValidator]],
       password: [''],
     });
   };
