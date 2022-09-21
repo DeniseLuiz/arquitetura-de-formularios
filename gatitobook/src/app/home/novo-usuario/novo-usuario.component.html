@@ -26,14 +26,18 @@
   <!-- minusculo é o nome do atributo retornado na function minusculoValidator -->
   <app-mensagem mensagem="Campo obrigatório"
   *ngIf="novoUsuarioForm.get('userName')?.errors?.required && novoUsuarioForm.get('userName')?.touched"></app-mensagem>
+  <app-mensagem mensagem="Usuário já existe."
+  *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente && novoUsuarioForm.get('userName')?.touched"></app-mensagem>
  </div>
 
  <div class="mb-3">
   <input placeholder="Senha" type="password" class="form-control" formControlName="password">
+  <app-mensagem mensagem="O campo usuário e senha não podem ser iguais"
+  *ngIf="novoUsuarioForm.errors?.senhaIgualUsuario"></app-mensagem>
  </div>
 
  <div class="d-grid gap-2">
-   <button class="btn btn-primary btn-block ">Cadastro</button>
+   <button class="btn btn-primary btn-block" [disabled]="!novoUsuarioForm.valid">Cadastro</button>
  </div>
 </form>
 <p>Já é usuário? <a [routerLink]="['']"> Acesse!</a></p>

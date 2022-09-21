@@ -14,4 +14,8 @@ export class NovoUsuarioService {
   cadastraNovoUsuario(novoUsuario: NovoUsuario): Observable<any>{
     return this.http.post(`${this.urlBase}/user/signup`, novoUsuario)
   }
+
+  verificaUsuarioExistente (nomeUsuario: string) {
+    return this.http.get(`http://localhost:3000/user/exists/${nomeUsuario}`);
+  }
 }
