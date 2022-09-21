@@ -21,6 +21,9 @@
 
  <div class="mb-3">
   <input placeholder="Usuário de acesso" type="text" class="form-control" formControlName="userName">
+  <app-mensagem mensagem="O campo usuário aceita somente letras minúsculas"
+  *ngIf="novoUsuarioForm.get('userName')?.errors?.minusculo && novoUsuarioForm.get('userName')?.touched"></app-mensagem>
+  <!-- minusculo é o nome do atributo retornado na function minusculoValidator -->
  </div>
 
  <div class="mb-3">
