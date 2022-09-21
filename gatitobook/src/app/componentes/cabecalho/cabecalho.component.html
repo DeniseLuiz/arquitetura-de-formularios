@@ -1,0 +1,19 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand" style="margin-left: 20px;">Caetano Book</a>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.name; else login" class="ml-8" style="margin-right: 20px;">
+        <i class="fa fa-user-circle mr-1" style="margin-left: 5px;"></i>
+        <a class="mr-1" style="margin-left: 5px;">{{user.name}}</a>
+        <a style="margin-left: 5px; text-decoration: underline; cursor: pointer;" (click)="logout()" >Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="navbar-text" *ngIf="!hiddenLogin">
+      <a style="margin-right: 20px;" [routerLink]="['']" >Login</a>
+    </span>
+  </ng-template>
+
+</header>
