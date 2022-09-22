@@ -1,0 +1,18 @@
+<p *ngIf="!animais.length" class="text-center text-muted"> Desculpe, não há fotos a serem mostradas.</p>
+
+<div class="row">
+  <div *ngFor="let animal of animais" class="col-4">
+    <a [routerLink]="['/animais', animal.id]"></a>
+    <app-cartao>
+      <app-animal [url]="animal.url" [descricao]="animal.description"></app-animal>
+      <div class="display flex p-1">
+        <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2">
+              {{animal.likes}}
+        </i>
+        <i style="margin-left: 5px;" aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-4">
+          {{ animal.comments }}
+        </i>
+</div>
+    </app-cartao>
+  </div>
+</div>
