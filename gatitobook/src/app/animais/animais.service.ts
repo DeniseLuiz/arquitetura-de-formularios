@@ -1,8 +1,7 @@
 import { environment } from './../../environments/environment.prod';
-import { TokenService } from './../autenticacao/token.service';
-import { Animais } from './animais';
+import { Animais, Animal } from './animais';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 const API = environment.apiUrl;
@@ -12,14 +11,13 @@ const API = environment.apiUrl;
 export class AnimaisService {
 
   constructor(
-    private http: HttpClient,
-    private tokenService: TokenService) { }
+    private http: HttpClient) { }
 
   getUserList(userName: string): Observable<Animais> {
-    const token = this.tokenService.retornaToken();
-    const headers = new HttpHeaders().append('x-access-token', token);
-    return this.http.get<Animais>(`${API}/${userName}/photos`, {
-      headers,
-    });
+    return this.http.get<Animais>(`${API}/${userName}/photos`);
+  }
+
+  getAnimalId(id: number): Observable<Animal>{
+    return this.http.get<Animal>(`${API}/photos/${id}`);
   }
 }
