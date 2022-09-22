@@ -10,6 +10,11 @@
         <i class="fa fa-comment-o fa-2x mr-2 ml-2">{{animal.comments}}</i>
         <i (click)="deletePhoto()" class="fa fa-trash-o fa-2x pull-right"></i>
       </small>
+
+      <app-comentarios *ngIf="animal.allowComments; else warning" [id]="animalId"></app-comentarios>
+      <ng-template #warning>
+        <p>Usuário não tem permissão para comentar essa foto.</p>
+      </ng-template>
     </div>
   </div>
 </div>
